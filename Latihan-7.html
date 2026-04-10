@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan-7</title>
+<style>
+    .container {
+      width: 400px;
+      margin: auto;
+      border: 1px solid gray;
+      padding: 15px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 5px;
+      margin-top: 5px;
+    }
+
+    .gender {
+      width: auto;
+    }
+
+    .button {
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h3>Form Biodata</h3>
+
+  <form>
+    <label>NPM</label>
+    <input type="text" name="npm">
+
+    <label>Fullname</label>
+    <input type="text" name="fullname">
+
+    <label>Email</label>
+    <input type="email" name="email">
+
+    <label>Password</label>
+    <input type="password" name="password">
+
+    <label>Place Birth</label>
+    <input type="text" name="place">
+
+    <label>Birthdate</label>
+    <input type="date" name="birthdate">
+
+    <label>Gender</label>
+    <input type="radio" name="gender" value="male" class="gender"> Male
+    <input type="radio" name="gender" value="female" class="gender"> Female
+
+    <label>Address</label>
+    <textarea rows="3" name="address"></textarea>
+
+    <div class="button">
+      <input type="submit" value="Save">
+      <input type="reset" value="Clear">
+    </div>
+
+  </form>
+</div>
+
+</body>
+</html>
