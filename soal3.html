@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Perhitungan Faktorial dan Deret</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: white;
+    }
+
+    .outer {
+        width: 750px;
+        margin: 40px auto;
+        border: 2px solid black;
+        padding: 15px;
+        background: white;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+    }
+
+    td {
+        border: 1px solid black;
+        padding: 15px;
+    }
+
+    .title {
+        text-align: center;
+        font-weight: bold;
+        font-size: 26px;
+    }
+
+    .label {
+        width: 20%;
+        font-size: 18px;
+    }
+
+    .input-col {
+        width: 55%;
+    }
+
+    .button-col {
+        width: 25%;
+        text-align: center;
+    }
+
+    input[type="text"] {
+        width: 95%;
+        height: 40px;
+        border: 1px solid black;
+    }
+
+    .btn {
+        display: block;
+        width: 80%;
+        margin: 5px auto;
+        padding: 8px;
+        border: 1px solid black;
+        background: white;
+        cursor: pointer;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="outer">
+    <table>
+        <tr>
+            <td colspan="3" class="title">
+                PERHITUNGAN<br>
+                FAKTORIAL dan DERET
+            </td>
+        </tr>
+
+        <tr>
+            <td class="label">N</td>
+            <td class="input-col">
+                <input type="text" id="n">
+            </td>
+            <td class="button-col"></td>
+        </tr>
+
+        <tr>
+            <td class="label">Hasil</td>
+            <td class="input-col"></td>
+            <td class="button-col">
+                <button class="btn" onclick="hitung()">Submit</button>
+                <button class="btn" onclick="resetForm()">Reset</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="label">Faktorial</td>
+            <td class="input-col">
+                <input type="text" id="faktorial" readonly>
+            </td>
+            <td class="button-col"></td>
+        </tr>
+
+        <tr>
+            <td class="label">Jumlah</td>
+            <td class="input-col">
+                <input type="text" id="jumlah" readonly>
+            </td>
+            <td class="button-col"></td>
+        </tr>
+    </table>
+</div>
+
+<script>
+function hitung() {
+    let n = parseInt(document.getElementById("n").value);
+
+    if (isNaN(n) || n < 0) {
+        alert("Masukkan angka yang valid!");
+        return;
+    }
+
+    let f = 1;
+    for (let i = 1; i <= n; i++) {
+        f *= i;
+    }
+
+    let j = 0;
+    for (let i = 1; i <= n; i++) {
+        j += i;
+    }
+
+    document.getElementById("faktorial").value = f;
+    document.getElementById("jumlah").value = j;
+}
+
+function resetForm() {
+    document.getElementById("n").value = "";
+    document.getElementById("faktorial").value = "";
+    document.getElementById("jumlah").value = "";
+}
+</script>
+
+</body>
+</html>

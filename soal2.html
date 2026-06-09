@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soal </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+        }
+        .checkbox-group input {
+            margin-right: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            display: none;
+        }
+        .result p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <h1>Form Pemesanan Travel IBIK Abadi</h1>
+    
+    <div>
+        <label for="nama">Nama Pemesan:</label>
+        <input type="text" id="nama" name="nama" placeholder="Masukkan nama Anda" required> <br><br>
+    </div>
+
+    <div class="form-group">
+        <label for="tujuan">Tujuan:</label>
+        <select id="tujuan">
+            <option value="Jakarta">Jakarta</option>
+            <option value="Solo">Solo</option>
+            <option value="Surabaya">Surabaya</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="kelas">Kelas:</label>
+        <select id="kelas">
+            <option value="Eksekutif">Eksekutif</option>
+            <option value="Bisnis">Bisnis</option>
+            <option value="Ekonomi">Ekonomi</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="jumlah">Banyak Tiket:</label>
+        <input type="number" id="jumlah" min="1" value="1" required>
+    </div>
+
+    <div class="form-group checkbox-group">
+        <input type="checkbox" id="member">
+        <label for="member" style="margin-bottom: 0;">Anggota Travel Bintang Abadi (Diskon 10%)</label>
+    </div>
+
+    <button onclick="hitungTotal()">Proses Pemesanan</button>
+
+    <div class="result" id="hasil">
+        <h3>Detail Pembayaran:</h3>
+        <p><strong>Harga Tiket:</strong> Rp <span id="outHarga">0</span></p>
+        <p><strong>Subtotal:</strong> Rp <span id="outSubtotal">0</span></p>
+        <p><strong>Diskon:</strong> Rp <span id="outDiskon">0</span></p>
+        <hr>
+        <p><strong>Total Bayar:</strong> Rp <span id="outTotal">0</span></p>
+    </div>
+</div>
+
+<script>
+    const daftarHarga = {
+        "Jakarta": { "Eksekutif": 70000, "Bisnis": 40000, "Ekonomi": 10000 },
+        "Solo": { "Eksekutif": 80000, "Bisnis": 50000, "Ekonomi": 20000 },
+        "Surabaya": { "Eksekutif": 90000, "Bisnis": 60000, "Ekonomi": 30000 }
+    };
+
+    function hitungTotal() {
+        let tujuan = document.getElementById("tujuan").value;
+        let kelas = document.getElementById("kelas").value;
+        let jumlahTiket = parseInt(document.getElementById("jumlah").value);
+        let isMember = document.getElementById("member").checked;
+
+        if (isNaN(jumlahTiket) || jumlahTiket < 1) {
+            alert("Masukkan jumlah tiket yang valid!");
+            return;
+        }
+
+        let hargaTiket = daftarHarga[tujuan][kelas];
+        let subtotal = hargaTiket * jumlahTiket;
+        
+        let diskon = 0;
+        if (isMember) {
+            diskon = subtotal * 0.10;
+        }
+        
+        let totalBayar = subtotal - diskon;
+
+        document.getElementById("outHarga").innerText = hargaTiket.toLocaleString('id-ID');
+        document.getElementById("outSubtotal").innerText = subtotal.toLocaleString('id-ID');
+        document.getElementById("outDiskon").innerText = diskon.toLocaleString('id-ID');
+        document.getElementById("outTotal").innerText = totalBayar.toLocaleString('id-ID');
+
+        document.getElementById("hasil").style.display = "block";
+    }
+</script>
+
+</body>
+</html>
