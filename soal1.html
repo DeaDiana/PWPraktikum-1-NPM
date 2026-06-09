@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Data Mahasiswa</title>
+</head>
+<body>
+
+    <h1>Form Data Mahasiswa</h1>
+
+    <form onsubmit="tampilkanData(event)">
+        <label for="nim">NIM : </label> <br>
+        <input type="text" id="nim" name="nim" required> <br><br>
+
+        <label for="nama">Nama : </label> <br>
+        <input type="text" id="nama" name="nama" required> <br><br>
+
+        <label>Jenis Kelamin : </label> <br>
+        <input type="radio" name="jenis_kelamin" value="Laki-Laki" required> Laki-Laki <br>
+        <input type="radio" name="jenis_kelamin" value="Perempuan"> Perempuan 
+        <br><br>
+
+        <label for="agama">Agama : </label> <br>
+        <select name="agama" id="agama" required>
+            <option value="">-- Pilih Agama --</option>
+            <option value="Islam">Islam</option>
+            <option value="Kristen">Kristen</option>
+            <option value="Katolik">Katolik</option>
+            <option value="Hindu">Hindu</option>
+            <option value="Budha">Budha</option>
+            <option value="KongHuCu">Kong Hu Cu</option>
+        </select> <br><br>
+
+        <label>Status : </label> <br>
+        <input type="radio" name="status" value="Belum Menikah" required> Belum Menikah <br>
+        <input type="radio" name="status" value="Sudah Menikah"> Sudah Menikah 
+        <br><br>
+
+        <label for="jurusan">Jurusan : </label> <br>
+        <select name="jurusan" id="jurusan" required>
+            <option value="">-- Pilih Jurusan --</option>
+            <option value="Teknologi Informasi">Teknologi Informasi</option>
+            <option value="Sistem Informasi">Sistem Informasi</option>
+            <option value="Pariwisata">Pariwisata</option>
+        </select> <br><br>
+
+        <label for="komentar">Komentar : </label> <br>
+        <textarea name="komentar" id="komentar" required></textarea> <br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <hr>
+
+    <h1>Data Mahasiswa</h1>
+    <p><strong>NIM: </strong> <span id="out_nim"></span></p>
+    <p><strong>Nama: </strong> <span id="out_nama"></span></p>
+    <p><strong>Jenis Kelamin: </strong> <span id="out_jenis_kelamin"></span></p>
+    <p><strong>Agama: </strong> <span id="out_agama"></span></p>
+    <p><strong>Status: </strong> <span id="out_status"></span></p>
+    <p><strong>Jurusan: </strong> <span id="out_jurusan"></span></p>
+    <p><strong>Komentar: </strong> <span id="out_komentar"></span></p>\
+    
+    <script>
+        function tampilkanData(event) {
+            event.preventDefault(); 
+            const formData = new FormData(event.target);
+           
+            document.getElementById('out_nim').innerText = formData.get('nim');
+            document.getElementById('out_nama').innerText = formData.get('nama');
+            document.getElementById('out_jenis_kelamin').innerText = formData.get('jenis_kelamin');
+            document.getElementById('out_agama').innerText = formData.get('agama');
+            document.getElementById('out_status').innerText = formData.get('status');
+            document.getElementById('out_jurusan').innerText = formData.get('jurusan');
+            document.getElementById('out_komentar').innerText = formData.get('komentar');
+        }
+    </script>
+
+</body>
+</html>
