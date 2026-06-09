@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soal 4</title>
+  </head>
+  <body>
+    <div>
+      <form onsubmit="HitungBunga(event)">
+        <label for="saldo">Saldo : </label><br />
+        <input type="number" name="saldo" id="saldo" /><br /><br />
+
+        <label for="bunga"> Bunga (%) :</label><br />
+        <input type="number" name="bunga" id="bunga" /><br /><br />
+
+        <label for="waktu">Waktu (bulan) : </label> <br />
+        <input type="number" name="waktu" id="waktu" /> <br /><br />
+
+        <button type="submit">Hitung Bunga</button>
+      </form>
+      <hr style="border-top: 3px solid black" />
+
+      <h1>Hasil</h1>
+      <div id="hasil"></div>
+    </div>
+
+    <script>
+      function HitungBunga(event) {
+        event.preventDefault();
+
+        let saldo = Number(document.getElementById("saldo").value);
+        let bunga = Number(document.getElementById("bunga").value);
+        let waktu = Number(document.getElementById("waktu").value);
+
+        let hasil = "";
+
+        for (let i = 1; i <= waktu; i++) {
+          saldo = saldo + (saldo * bunga) / 100;
+          hasil += "Saldo Bulan" + i + "= Rp. " + saldo + "<br>";
+        }
+        document.getElementById("hasil").innerHTML = hasil;
+      }
+    </script>
+  </body>
+</html>
